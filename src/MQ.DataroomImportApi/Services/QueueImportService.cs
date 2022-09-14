@@ -37,8 +37,8 @@ public class QueueImportService : IQueueImportService
             throw new ApiException(ErrorCodes.FileIsTooBig);
         }
 
-        bool isKeyExists = await IsIdempotencyKeyInsertSuccessfull(docData.IdempotencyKey);
-        if (isKeyExists)
+        bool isKeyNew = await IsIdempotencyKeyInsertSuccessfull(docData.IdempotencyKey);
+        if (isKeyNew)
         {
             try
             {
